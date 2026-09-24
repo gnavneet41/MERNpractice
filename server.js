@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const {router : userRouter} = require('./Routes/userRoute.js')
+const {router : dashboardRouter} = require('./Dashboard.js')
 
 app.get('/', (req, res) => {
     res.send('Home');
@@ -21,7 +22,7 @@ config();
 app.use(express.json());
 
 app.use('/auth',userRouter);
-
+app.use('/dashboard',dashboardRouter);
 
 app.listen(3000, () => {
   console.log('http://localhost:3000');
